@@ -1,0 +1,8 @@
+/* Elementor style */
+.elementor-element-overlay>ul {
+	margin-top: 0;
+}
+
+.elementor-add-section-area-button.elementor-add-sb-button {
+    padding: 8px;
+}

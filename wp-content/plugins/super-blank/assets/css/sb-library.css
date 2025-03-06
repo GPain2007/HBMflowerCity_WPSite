@@ -1,0 +1,486 @@
+/* Variables */
+/* Default Light theme */
+:root {
+    /* Primary color used in header - logo, active/hovered tabs, darkmode and x icons */
+    --sb-color-primary: #303A4D;
+
+    /* Background colors used in header bg and overall bg */
+    --sb-color-header-background: #FFFFFF;
+    --sb-color-templates-background: #E9EBF1;
+
+    /* Text colors - primary for all text, light for grayish non-important text */
+    --sb-color-text: #303A4D;
+    --sb-color-text-light: #989DA6;
+
+    /* Border color - for header bottom border and categories dropdown border */
+    --sb-color-border: #e6e9ec;
+
+    /* Controls color of darkened background when modal opens & shadow color on template mouseover */
+    --sb-color-overlay: rgba(0, 0, 0, 0.7);
+    --sb-color-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme */
+.sb-dark-theme {
+    --sb-color-primary: #FFFFFF;
+    --sb-color-header-background: #303133;
+    --sb-color-templates-background: #1F2124;
+    --sb-color-text: #FFFFFF;
+    --sb-color-text-light: #979899;
+    --sb-color-border: #2a2e34;
+    /* #3b414a / #374151; */
+
+    --sb-color-overlay: rgba(0, 0, 0, 0.7);
+    --sb-color-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Modal styles */
+.sb-library-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+}
+
+.sb-library-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--sb-color-overlay);
+}
+
+.sb-library-modal-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1270px;
+    max-width: 80vw;
+    height: 800px;
+    max-height: 80vh;
+    background-color: var(--sb-color-templates-background);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Header */
+.sb-library-modal-header {
+    background-color: var(--sb-color-header-background);
+    display: flex;
+    align-items: center;
+    padding: 14px 22px 12px 30px;
+    border-bottom: 1px solid var(--sb-color-border);
+    position: relative;
+    min-height: 52px;
+    /* Set a fixed minimum height */
+}
+
+.sb-library-modal-brand {
+    display: flex;
+    align-items: center;
+}
+
+.sb-logo {
+    margin-right: 10px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    color: var(--sb-color-text);
+    /* Change from primary to text color */
+}
+
+.sb-brand-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--sb-color-text);
+    /* Change from primary to text color */
+}
+
+/* Tabs */
+.sb-library-modal-tabs {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    height: 100%;
+}
+
+.sb-library-tab {
+    background: none;
+    border: 1px solid transparent;
+    padding: 8px 8px 6px 8px;
+    cursor: pointer;
+    color: var(--sb-color-text-light);
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
+    margin-bottom: -1px;
+    position: relative;
+    border-bottom: 2px solid transparent;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    svg path {
+        fill: currentColor;
+    }
+}
+
+.sb-library-tab i {
+    font-size: 16px;
+}
+
+.sb-library-tab:hover {
+    color: var(--sb-color-primary);
+}
+
+.sb-library-tab.active {
+    border-bottom: 2px solid var(--sb-color-primary);
+    margin-bottom: -2px;
+}
+
+button.sb-library-tab.active {
+    color: var(--sb-color-primary);
+}
+
+.sb-library-modal-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    line-height: 0;
+    color: var(--sb-color-primary);
+    margin-left: 0;
+    /* Remove auto margin */
+}
+
+.sb-library-modal-close:hover {
+    opacity: 0.8;
+}
+
+.sb-library-modal-close svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Categories */
+.sb-library-modal-categories {
+    padding: 24px 0;
+    margin: 0;
+}
+
+.sb-library-category-select-wrapper {
+    position: relative;
+    width: 170px;
+}
+
+.sb-library-category-select {
+    width: 100%;
+    height: 42px;
+    padding: 8px 16px;
+    padding-right: 36px;
+    border: 1px solid var(--sb-color-border);
+    border-radius: 900px;
+    font-size: 14px;
+    color: var(--sb-color-text);
+    appearance: none;
+    background-color: var(--sb-color-header-background);
+    cursor: pointer;
+}
+
+/* Add styles for the dropdown options */
+.sb-library-category-select option {
+    border-radius: 900px;
+    padding: 8px 16px;
+    background-color: var(--sb-color-header-background);
+}
+
+/* Style the select when it's opened */
+.sb-library-category-select:focus {
+    outline: none;
+    border-color: var(--sb-color-border);
+    box-shadow: 0 0 0 1px var(--sb-color-border);
+}
+
+/* Webkit browsers specific styling */
+.sb-library-category-select::-webkit-listbox {
+    border-radius: 900px;
+    padding: 4px;
+}
+
+.sb-library-category-select-wrapper i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--sb-color-text);
+    pointer-events: none;
+}
+
+/* Content */
+.sb-library-content-wrapper {
+    width: 100%;
+    padding: 0 65px;
+    margin: 0 auto;
+    height: 100%;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    position: relative;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.sb-library-content-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.sb-library-modal-content.sb-modal-type-pages {
+    flex: 1;
+    padding: 0 0 30px 0;
+    margin: 0;
+    -ms-overflow-style: initial;
+    scrollbar-width: initial;
+}
+
+.sb-library-modal-content::-webkit-scrollbar {
+    display: initial;
+    /* Remove the scrollbar hiding */
+}
+
+.sb-library-modal-content.sb-modal-type-pages .sb-library-templates-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* Template items */
+.sb-library-modal-content.sb-modal-type-pages .sb-library-template-item {
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sb-library-template-item {
+    transition: all 0.3s ease;
+}
+
+.sb-library-modal-content.sb-modal-type-pages .sb-library-template-item:hover,
+.sb-library-modal-content.sb-modal-type-sections .sb-library-template-item:hover>div {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px var(--sb-color-shadow);
+}
+
+.sb-library-modal-content.sb-modal-type-pages .sb-library-template-preview {
+    position: relative;
+    width: 100%;
+    padding-top: 110%;
+    overflow: hidden;
+    background-color: #f2f2f2;
+    /* Optional: background color for empty space */
+}
+
+.sb-library-modal-content.sb-modal-type-pages .sb-library-template-preview img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the image covers the entire area */
+    object-position: top;
+}
+
+/* Loading area */
+.sb-loading-area {
+    position: fixed;
+    top: 54px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 54px);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--sb-color-templates-background);
+    flex-direction: column;
+}
+
+.sb-loading-area svg {
+    width: 140px;
+}
+
+/* Add this at the end of your CSS file - todo remove */
+.sb-library-reload-styles {
+    display: none !important;
+    /* todo remove this whole thing, it's used just for testing and debug */
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #93003c;
+    border: none;
+    color: var(--sb-color-header-background);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px var(--sb-color-shadow);
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+
+.sb-library-reload-styles:hover {
+    background: #760030;
+    transform: rotate(180deg);
+}
+
+.sb-library-reload-styles i {
+    font-size: 18px;
+}
+
+
+
+/* Dark/light mode toggle button */
+.sb-library-theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding-right: 10px;
+    color: var(--sb-color-primary);
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.sb-dark-mode {
+    display: none;
+}
+
+.sb-dark-theme .sb-dark-mode {
+    display: block;
+}
+
+.sb-dark-theme .sb-white-mode {
+    display: none;
+}
+
+
+.sb-library-theme-toggle:hover {
+    opacity: 0.8;
+}
+
+.sb-library-theme-toggle svg {
+    width: 17px;
+    height: 17px;
+    display: none;
+}
+
+/* Show half-moon icon by default */
+.sb-library-theme-toggle .sb-theme-light {
+    display: block;
+}
+
+/* When dark theme is active, show empty circle */
+.sb-dark-theme .sb-library-theme-toggle .sb-theme-light {
+    display: none;
+}
+
+.sb-dark-theme .sb-library-theme-toggle .sb-theme-dark {
+    display: block;
+}
+
+/* masonry */
+.sb-library-modal-content.sb-modal-type-sections .sb-library-templates-grid {
+    width: 100%;
+}
+
+/* Grid layout for 4 or fewer items */
+.sb-library-modal-content.sb-modal-type-sections .sb-library-templates-grid:has(.sb-library-template-item:nth-child(-n+4):last-child) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* Column layout for more than 4 items */
+.sb-library-modal-content.sb-modal-type-sections .sb-library-templates-grid:not(:has(.sb-library-template-item:nth-child(-n+4):last-child)) {
+    column-count: 4;
+    column-gap: 20px;
+}
+
+.sb-library-modal-content.sb-modal-type-sections .sb-library-template-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sb-library-modal-content.sb-modal-type-sections .sb-library-template-preview {
+    width: 100%;
+    cursor: pointer;
+}
+
+.sb-library-modal-content.sb-modal-type-sections .sb-library-template-preview:hover {}
+
+.sb-library-modal-content.sb-modal-type-sections .sb-library-template-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#paint0_linear_826_641 {
+    animation: sb-rotate 1s linear infinite;
+    transform-origin: 50% 50%;
+}
+
+@keyframes sb-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1200px) {
+    .sb-library-modal-content.sb-modal-type-sections .sb-library-templates-grid:not(:has(.sb-library-template-item:nth-child(-n+4):last-child)) {
+        column-count: 3;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .sb-library-modal-content.sb-modal-type-sections .sb-library-templates-grid:not(:has(.sb-library-template-item:nth-child(-n+4):last-child)) {
+        column-count: 2;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .sb-library-modal-content.sb-modal-type-sections .sb-library-templates-grid:not(:has(.sb-library-template-item:nth-child(-n+4):last-child)) {
+        column-count: 1;
+    }
+
+    .sb-library-modal-content.sb-modal-type-sections .sb-library-templates-grid:has(.sb-library-template-item:nth-child(-n+4):last-child) {
+        grid-template-columns: 1fr;
+    }
+}

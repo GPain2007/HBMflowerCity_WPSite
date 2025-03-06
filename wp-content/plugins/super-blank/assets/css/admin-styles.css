@@ -1,0 +1,608 @@
+@font-face {
+	font-family: 'Inter';
+	src: url('../fonts/Inter-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Inter';
+	src: url('../fonts/Inter-SemiBold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
+}
+
+.super-blank-admin-page {
+	margin: 0;
+	padding: 10px 20px 0 2px;
+	background-image: url('../images/admin-bg.png');
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: 100%;
+	margin-left: -20px;
+}
+
+.super-blank-wrap {
+	font-family: 'Inter', sans-serif;
+    max-width: 800px;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    position: relative;
+    padding-bottom: 100px;
+}
+
+.super-blank-wrap h2,
+.super-blank-heading {
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+    color: #1d2327;
+}
+
+.super-blank-wrap p {
+	font-size: 18px;
+	margin-bottom: 20px;
+	font-size: 18px;
+	margin-bottom: 20px;
+	letter-spacing: -0.18px;
+}
+
+.super-blank-wrap p.super-blank-description {
+	font-size: 1.12rem;
+    margin-bottom: 20px;
+    letter-spacing: -0.18px;
+    max-width: 555px;
+    line-height: 30px;
+    margin: 20px auto 26px auto;
+}
+
+.super-blank-wrap .super-blank-button {
+	margin-top: 0px;
+}
+
+.super-blank-wrap .super-blank-button .button {
+	font-size: 20px;
+    padding: 20px;
+    width: 250px;
+    height: auto;
+    line-height: 1;
+    display: inline-block;
+    background-color: #000000;
+    border-radius: 50px;
+    color: #ffffff;
+    border: none;
+    font-weight: 600;
+    transition: opacity 0.4s ease-out;
+}
+
+/* Styling for the packages wrapper */
+.blog-package-wrap {
+	padding: 40px 70px 0 70px;
+}
+
+/* Set up display grid for packages */
+.flex-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+	gap: 40px 50px;
+	padding: 20px 0;
+	width: 100%;
+}
+
+.flex-container>div {
+	display: flex;
+	flex-direction: column;
+	min-width: 400px;
+	max-width: 860px;
+	width: 100%;
+}
+
+/* Ensure all items in a row have equal height */
+.flex-container>div>* {
+	flex-grow: 1;
+}
+
+/* Specific styles for elements inside the grid items */
+.flex-container>div>img {
+	width: 100%;
+	aspect-ratio: 16 / 9.8;
+	object-fit: cover;
+	object-position: top center;
+	border: 1px solid #00000099;
+	border-radius: 12px;
+	flex-grow: 0;
+	/* Prevent image from stretching */
+}
+
+.flex-container>div>h2 {
+	font-size: 20px;
+	margin: 20px 5px 0 5px;
+}
+
+.flex-container>div>p {
+	margin: 16px 5px 0 5px;
+}
+
+
+
+/* Styling for the Install and Watch buttons */
+.button-container {
+	display: flex;
+	gap: 10px;
+	margin: 16px 5px;
+}
+
+.button-container .package-input,
+.button-container .watch-video {
+	margin: 0;
+	height: 34px;
+	/* Adjust this value to make buttons smaller */
+	line-height: 28px;
+	/* Adjust this value to vertically center text */
+	font-size: 13px;
+	/* Adjust font size if needed */
+}
+
+.button-container .watch-video {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	padding: 0 15px 0 40px;
+	position: relative;
+}
+
+.button-container .watch-video::before {
+	content: "\f236";
+	font-family: dashicons;
+	font-size: 18px;
+	color: #FF0000;
+	position: absolute;
+	left: 15px;
+	top: calc(50% + 0.03rem);
+	transform: translateY(-50%);
+}
+
+/* Style for disabled Watch Tutorial button (Coming soon...) */
+.button-container .watch-video.disabled {
+	pointer-events: none;
+	cursor: not-allowed;
+}
+
+.button-container .watch-video.disabled::before {
+	opacity: 0.6;
+	color: #717171;
+}
+
+/* Ensure text alignment for both buttons */
+.button-container .button {
+	vertical-align: middle;
+}
+
+
+
+/* Styling for the jQuery dialog */
+.ui-dialog {
+	z-index: 1000000 !important;
+}
+
+.ui-button.ui-state-disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+#status-message {
+	position: relative;
+	border-radius: 50px;
+}
+
+#status-message #wp-pack-step-progress {
+	content: '';
+	width: 0%;
+	position: absolute;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgb(0 128 0 / 6%);
+	z-index: -1;
+}
+
+#status-message,
+.additional-status-message {
+	padding: 12px 24px;
+    min-width: 300px;
+    margin: .1em auto 2.4em auto;
+    position: relative;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 50px;
+    color: #00a32a;
+    background-color: rgb(0 162 41 / 15%);
+}
+
+#status-message.super-blank-warning,
+.additional-status-message {
+	color: #e10000;
+	background-color: rgb(255 0 0 / 15%);
+}
+
+p.additional-status-message {
+	margin-top: 30px;
+	font-size: 14px;
+}
+
+#progress-bar-container {
+	height: 4px;
+	width: 100%;
+	background-color: #f0f0f1;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+#progress-bar {
+	height: 100%;
+	width: 0%;
+	background-color: #00a32a;
+	transition: all .5s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+/* New styles for the Install button in the confirmation dialog */
+.ui-dialog .ui-dialog-buttonpane button:first-of-type {
+	background: #2271b1;
+	border-color: #2271b1;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: none;
+}
+
+.ui-dialog .ui-dialog-buttonpane button:first-of-type:hover,
+.ui-dialog .ui-dialog-buttonpane button:first-of-type:focus {
+	background: #135e96;
+	border-color: #135e96;
+	color: #fff;
+}
+
+.ui-dialog .ui-dialog-buttonpane button:first-of-type:focus {
+	box-shadow: 0 0 0 1px #fff, 0 0 0 3px #2271b1;
+}
+
+.ui-dialog .ui-dialog-buttonpane button:first-of-type:active {
+	background: #135e96;
+	border-color: #135e96;
+	color: #fff;
+}
+
+/* Improve UI dialog spacing */
+.ui-draggable .ui-dialog-titlebar {
+	height: 46px;
+	line-height: 46px;
+}
+
+.ui-button.ui-dialog-titlebar-close {
+	height: 47px;
+	width: 47px;
+}
+
+.ui-dialog-titlebar-close:before {
+	font: normal 23px/1 dashicons;
+	line-height: 46px;
+}
+
+.ui-dialog-content {
+	padding: 12px 16px 18px 16px;
+	overflow: hidden;
+}
+
+.wp-packages-transparent-wall {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 66px;
+	height: 100%;
+	z-index: 99999999;
+}
+
+.wp-packages-alert {
+	position: fixed;
+	background-color: #fff;
+	right: 20px;
+	bottom: 20px;
+	z-index: 999999991;
+	padding: 20px;
+	border-left: 4px solid #00a32a;
+	max-width: 420px;
+}
+
+.wp-packages-alert p {
+	font-size: 16px;
+}
+
+.alert-type-warning {
+	border-left: 4px solid #ffeeba;
+}
+
+.wp-packages-alert button {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+	line-height: 0;
+	border: none;
+	outline: none;
+	color: red;
+	background: transparent;
+	cursor: pointer;
+}
+
+/* tabs */
+.portfolio-tabs {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+.tab-button {
+	background-color: #f1f1f1;
+	border: none;
+	color: #333;
+	cursor: pointer;
+	padding: 10px 20px;
+	font-size: 16px;
+	transition: background-color 0.3s;
+	text-decoration: none;
+}
+
+.tab-button:hover {
+	background-color: #ddd;
+}
+
+.tab-button.active {
+	background-color: #4CAF50;
+	color: white;
+	border: 1px solid #4CAF50 !important;
+}
+
+.tab-button:first-child {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border: 1px solid #e1e1e1;
+	border-right: none;
+}
+
+.tab-button:last-child {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border: 1px solid #e1e1e1;
+	border-left: none;
+}
+
+/* loading */
+.loading-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+}
+
+.loading-gif {
+	width: 50px;
+	height: 50px;
+}
+
+/* Elementor */
+.e-notice {
+	display: none !important;
+}
+
+/* Admin icon */
+.toplevel_page_super-blank-page img {
+    max-width: 18px;
+}
+
+.super-blank-tools-loading svg {
+	width: 80px;
+}
+
+#paint0_linear_826_641 {
+    animation: sb-rotate 1s linear infinite;
+    transform-origin: 50% 50%;
+}
+
+@keyframes sb-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Mobile optimizations */
+@media screen and (max-width: 782px) {
+
+	/* Fix too much space at bottom for mobile when menu completely hides under hamburger menu */
+	div#wpbody-content {
+		padding-bottom: 50px;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+
+	/* If the screen is small, we always want only 1 column with the packages */
+	.blog-package-wrap {
+		padding: 40px 20px 0 20px;
+	}
+
+	.flex-container {
+		grid-template-columns: 1fr;
+	}
+
+	.flex-container>div {
+		min-width: 325px;
+	}
+
+	.ui-dialog {
+		width: 380px !important;
+	}
+}
+
+/* Animation for when typing "super blank" inside the text field */
+.super-blank-tools-area {
+    position: relative;
+    height: 62px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.super-blank-confirmation,
+.super-blank-button {
+    position: absolute;
+    width: 250px;
+}
+
+/* Confirmation area styles */
+.super-blank-confirmation {
+    display: inline-block;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.6s ease-out, visibility 0s linear;
+}
+
+.super-blank-confirmation.hiding {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease-out, visibility 0s linear 0.4s;
+}
+
+/* Input styles */
+#super-blank-confirmation-input {
+    font-size: 22px;
+    padding: 16px;
+    width: 100%;
+    height: auto;
+    line-height: 1;
+    background-color: #000000;
+    border-radius: 50px;
+    color: rgba(255, 255, 255, 0.9);
+    border: none;
+    font-weight: 600;
+    text-align: center;
+    cursor: text;
+    position: relative;
+    z-index: 1;
+}
+
+#super-blank-confirmation-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#super-blank-confirmation-input:focus {
+    color: #ffffff;
+    outline: none;
+}
+
+#super-blank-confirmation-input:focus::placeholder {
+    color: transparent;
+}
+
+/* Cursor container styles */
+.cursor-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    color: rgba(255, 255, 255, 0.6);
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 600;
+    z-index: 3;
+    margin-top: 1px;
+}
+
+/* Hide cursor container when input is focused or has content */
+.super-blank-confirmation.focused .cursor-container,
+.super-blank-confirmation.has-content .cursor-container,
+#super-blank-confirmation-input:focus ~ .cursor-container {
+    display: none;
+}
+
+.cursor {
+    display: inline-block;
+    animation: blink 1s step-end infinite;
+    color: rgba(255, 255, 255, 0.6);
+    transform: scaleY(0.8);
+    margin-top: 2px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Installing animation */
+@keyframes ellipsis {
+    0% { content: ""; }
+    25% { content: "."; }
+    50% { content: ".."; }
+    75% { content: "..."; }
+    100% { content: ""; }
+}
+
+.installing-animation:after {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    text-align: left;
+    animation: ellipsis 1.5s infinite;
+}
+
+/* Button styles */
+/* .super-blank-button {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease-in, visibility 0s linear 0.4s;
+} */
+
+.super-blank-button.showing {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.6s ease-in, visibility 0s linear;
+}
+
+.super-blank-button .button {
+    width: 100%;
+    text-align: center;
+}
+
+.super-blank-wrap .super-blank-button .button.fade-out {
+	opacity: 0;
+}
+
+.super-blank-wrap .super-blank-button .button.fade-in {
+	opacity: 1;
+}
