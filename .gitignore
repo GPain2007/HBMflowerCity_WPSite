@@ -1,1 +1,17 @@
 old_site
+
+# Credentials: never commit these. Keep the real wp-config.php on the host
+# and in a private backup; wp-config-sample.php shows the expected settings.
+wp-config.php
+.env
+.env.*
+*.sql
+*.sql.gz
+*.wpress
+*.bak
+debug.log
+error_log
+
+# Local tooling
+__pycache__/
+.pytest_cache/
